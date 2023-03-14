@@ -1,3 +1,3 @@
 # News_Projeect
-Bu loyiha pythonning django Framework asosida tayorlangan yangiliklar saytidir.
+<h4>Bu loyiha pythonning django Framework asosida tayorlangan yangiliklar saytidir.</h4>
 Unda qo'llanilgan texologiyalar - 
