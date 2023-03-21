@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 # Create your models here.
 class Category(models.Model):
@@ -18,7 +19,7 @@ class News(models.Model):
     slug = models.SlugField(max_length=250)
     text = models.TextField()
     image = models.ImageField(upload_to='news/images')
-    published_time = models.DateTimeField()
+    published_time = models.DateTimeField(default=timezone.now)
     created_time = models.DateTimeField(auto_now_add=True)
     uploaded_time = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(
