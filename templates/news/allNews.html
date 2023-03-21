@@ -1,0 +1,8 @@
+<div class="all_news">
+    <h1>All news</h1>
+    {% for news in all_news %}
+        <div class="new">
+            <h3><a href="{% url 'detail_news' news.pk %}">{{news.title}}</a></h3>
+        </div>
+    {% endfor %}
+</div>
