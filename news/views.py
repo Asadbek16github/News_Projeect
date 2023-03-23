@@ -30,3 +30,6 @@ def homePageView(request):
 
 def contactPageView(request):
     return render(request, 'news/contact.html')
+
+def page_404_view(request):
+    return render(request, 'news/404.html')
