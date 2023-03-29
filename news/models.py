@@ -43,3 +43,6 @@ class Contact(models.Model):
     name = models.CharField(max_length=100, verbose_name='Ismingiz')
     email = models.EmailField(max_length=100, verbose_name='Email manzil')
     text = models.TextField(verbose_name='Xabar matni')
+
+    def __str__(self):
+        return self.email
