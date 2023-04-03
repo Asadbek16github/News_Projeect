@@ -241,21 +241,17 @@
             </ul>
           </div>
           <div class="single_sidebar">
-            <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="active"><a href="#category" aria-controls="home" role="tab" data-toggle="tab">Category</a></li>
-              <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab">Video</a></li>
+            <ul class="nav nav-tabs" role="tablist" style="">
+              <li role="presentation" class="active"><a href="#category" aria-controls="home" role="tab" data-toggle="tab">Kategoriya</a></li>
+              <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab">Videolar</a></li>
               <li role="presentation"><a href="#comments" aria-controls="messages" role="tab" data-toggle="tab">Comments</a></li>
             </ul>
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane active" id="category">
                 <ul>
-                  <li class="cat-item"><a href="#">Sports</a></li>
-                  <li class="cat-item"><a href="#">Fashion</a></li>
-                  <li class="cat-item"><a href="#">Business</a></li>
-                  <li class="cat-item"><a href="#">Technology</a></li>
-                  <li class="cat-item"><a href="#">Games</a></li>
-                  <li class="cat-item"><a href="#">Life &amp; Style</a></li>
-                  <li class="cat-item"><a href="#">Photography</a></li>
+                  {% for category in all_categories %}
+                  <li class="cat-item"><a href="">{{category.category}}</a></li>
+                  {% endfor %}
                 </ul>
               </div>
               <div role="tabpanel" class="tab-pane" id="video">

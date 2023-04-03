@@ -17,7 +17,7 @@
 .spost_nav .media-body > a:hover{color:#d083cf}
 .cat-item a:hover{background-color:#d083cf}
 .nav-tabs > li > a:hover, .nav-tabs > li > a:focus{background-color:#d083cf}
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{background-color:#d083cf}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{background-color:#d083cf !important}
 .single_sidebar > ul > li a:hover{color:#d083cf}
 .footer_widget > h2:hover{color:#d083cf}
 .tag_nav li a:hover{color:#d083cf; border-color:#d083cf}
