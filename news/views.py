@@ -21,10 +21,14 @@ class detail_View(DetailView):
 def homePageView(request):
     all_news = News.objects.filter(status=News.Status.Published)[:5]
     all_categories = Category.objects.all()
+    last_local_news_one = News.objects.filter(status=News.Status.Published).filter(category__category='Mahalliy')[:1]
+    last_local_news = News.objects.filter(status=News.Status.Published).filter(category__category='Mahalliy')[1:6]
 
     context = {
         'all_news':all_news,
         'all_categories':all_categories,
+        'last_local_news_one':last_local_news_one,
+        'last_local_news':last_local_news
     }
 
     return render(request, 'news/index.html', context=context)
