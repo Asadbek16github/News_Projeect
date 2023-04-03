@@ -19,7 +19,7 @@ class detail_View(DetailView):
     template_name = 'news/detail.html'
 
 def homePageView(request):
-    all_news = News.objects.filter(status=News.Status.Published)
+    all_news = News.objects.filter(status=News.Status.Published)[:5]
     all_categories = Category.objects.all()
 
     context = {
