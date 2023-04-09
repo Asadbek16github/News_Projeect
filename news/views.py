@@ -45,8 +45,8 @@ class HomePageView(ListView):
         context = super().get_context_data(**kwargs)
         context['all_categories'] = Category.objects.all()
         context['news'] = News.objects.filter(status=News.Status.Published).order_by('-published_time')[:4]
-        context['last_local_news_one'] = News.objects.filter(status=News.Status.Published).filter(category__category='Mahalliy')[:1]
-        context['last_local_news'] = News.objects.filter(status=News.Status.Published).filter(category__category='Mahalliy')[1:5]
+        context['mahalliy'] = News.objects.filter(status=News.Status.Published).filter(category__category='Mahalliy')[:5]
+        context['sport'] = News.objects.filter(status=News.Status.Published).filter(category__category='Sport').order_by('-published_time')[:5]
 
         return context
 
