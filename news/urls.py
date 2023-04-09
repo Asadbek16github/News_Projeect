@@ -6,5 +6,5 @@ urlpatterns = [
     path('contact/', contactPageView, name='contact_page'),
     path('404/', page_404_view, name='404'), 
     path('news/', newsView, name='allNews'),
-    path('news/<int:pk>/', detail_View.as_view(), name='detail_news'),
+    path('news/<slug:news>/', detail_View, name='detail_news'),
 ]

@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from .models import News, Category
 from django.views.generic import DetailView, ListView
 from .forms import ContactForm
@@ -14,9 +14,17 @@ def newsView(request):
 
     return render(request, 'news/allNews.html', context=context)
 
-class detail_View(DetailView):
-    model = News
-    template_name = 'news/detail.html'
+# class detail_View(DetailView):
+#     model = News
+#     template_name = 'news/detail.html'
+
+def detail_View(request, news):
+    news = get_object_or_404(News, slug=news, status=News.Status.Published)
+
+    context = {
+        'news':news
+    }
+    return render(request, 'news/detail.html', context=context)
 
 
 # home page view funcksiya orqali yozilgan
@@ -44,11 +52,11 @@ class HomePageView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['all_categories'] = Category.objects.all()
-        context['news'] = News.objects.filter(status=News.Status.Published).order_by('-published_time')[:4]
-        context['mahalliy'] = News.objects.filter(status=News.Status.Published).filter(category__category='Mahalliy')[:5]
-        context['sport'] = News.objects.filter(status=News.Status.Published).filter(category__category='Sport').order_by('-published_time')[:5]
-        context['xorij'] = News.objects.filter(status=News.Status.Published).filter(category__category='Xorij xabarlari').order_by('-published_time')[:5]
-        context['lifestyle'] = News.objects.filter(status=News.Status.Published).filter(category__category='lifestyle').order_by('-published_time')[:5]
+        context['news'] = News.objects.order_by('-published_time')[:4]
+        context['mahalliy'] = News.objects.filter(category__category='Mahalliy')[:5]
+        context['sport'] = News.objects.filter(category__category='Sport').order_by('-published_time')[:5]
+        context['xorij'] = News.objects.filter(category__category='Xorij xabarlari').order_by('-published_time')[:5]
+        context['lifestyle'] = News.objects.filter(category__category='lifestyle').order_by('-published_time')[:5]
 
         return context
 
