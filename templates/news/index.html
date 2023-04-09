@@ -102,36 +102,29 @@
             </div>
             <div class="technology">
               <div class="single_post_content">
-                <h2><span>Technology</span></h2>
+                <h2><span>Hayot tarzi</span></h2>
                 <ul class="business_catgnav">
-                  <li>
-                    <figure class="bsbig_fig wow fadeInDown"> <a href="pages/single_page.html" class="featured_img"> <img alt="" src="{% static 'images/featured_img3.jpg' %}"> <span class="overlay"></span> </a>
-                      <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                      <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
-                    </figure>
-                  </li>
+                  {% for news in lifestyle %}
+                    {% if forloop.first %}
+                      <li>
+                        <figure class="bsbig_fig wow fadeInDown"> <a href="{% url 'detail_news' news.pk %}" class="featured_img"> <img alt="" src="{{news.image.url}}"> <span class="overlay"></span> </a>
+                          <figcaption> <a href="{% url 'detail_news' news.pk %}">{{ news.title }}</a> </figcaption>
+                          <p>{{ news.text | truncatewords:15 }}</p>
+                        </figure>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
                 </ul>
                 <ul class="spost_nav">
-                  <li>
-                    <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{% static 'images/post_img1.jpg' %}"> </a>
-                      <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{% static 'images/post_img2.jpg' %}"> </a>
-                      <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{% static 'images/post_img1.jpg' %}"> </a>
-                      <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{% static 'images/post_img2.jpg' %}"> </a>
-                      <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-                    </div>
-                  </li>
+                  {% for news in lifestyle %}
+                    {% if forloop.counter > 1 %}
+                      <li>
+                        <div class="media wow fadeInDown"> <a href="{% url 'detail_news' news.pk %}" class="media-left"> <img alt="" src="{{news.image.url}}"> </a>
+                          <div class="media-body"> <a href="{% url 'detail_news' news.pk %}" class="catg_title">{{ news.title }}</a> </div>
+                        </div>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
                 </ul>
               </div>
             </div>
@@ -279,13 +272,12 @@
             <h2><span>Sponsor</span></h2>
             <a class="sideAdd" href="#"><img src="{% static 'images/add_img.jpg' %}" alt=""></a> </div>
           <div class="single_sidebar wow fadeInDown">
-            <h2><span>Category Archive</span></h2>
+            <h2><span>Xabar kategoriyalari</span></h2>
             <select class="catgArchive">
-              <option>Select Category</option>
-              <option>Life styles</option>
-              <option>Sports</option>
-              <option>Technology</option>
-              <option>Treads</option>
+              <option>-- Kategoriya tanlang --</option>
+              {% for category in all_categories %}
+                <option>{{category.category}}</option>
+              {% endfor %}
             </select>
           </div>
           <div class="single_sidebar wow fadeInDown">

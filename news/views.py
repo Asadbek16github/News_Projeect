@@ -48,6 +48,7 @@ class HomePageView(ListView):
         context['mahalliy'] = News.objects.filter(status=News.Status.Published).filter(category__category='Mahalliy')[:5]
         context['sport'] = News.objects.filter(status=News.Status.Published).filter(category__category='Sport').order_by('-published_time')[:5]
         context['xorij'] = News.objects.filter(status=News.Status.Published).filter(category__category='Xorij xabarlari').order_by('-published_time')[:5]
+        context['lifestyle'] = News.objects.filter(status=News.Status.Published).filter(category__category='lifestyle').order_by('-published_time')[:5]
 
         return context
 
