@@ -1,10 +1,10 @@
 from .models import News
 
 def NewsProcessor(request):
-    all_news = News.objects.all()
+    newsProcessor_news = News.objects.filter(status=News.Status.Published).order_by('-published_time')[:10]
 
     context = {
-        'all_news':all_news
+        'newsProcessor_news':newsProcessor_news
     }
 
     return context
