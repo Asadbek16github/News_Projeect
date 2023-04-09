@@ -23,7 +23,7 @@
           <div class="latest_post_container">
             <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
             <ul class="latest_postnav">
-              {% for news in all_news %}
+              {% for news in news %}
               <li>
                 <div class="media"> <a href="{% url 'detail_news' news.pk %}" class="media-left"> <img alt="" src="{{news.image.url}}"> </a>
                   <div class="media-body"> <a href="{% url 'detail_news' news.pk %}" class="catg_title">{{news.title}}</a> </div>
