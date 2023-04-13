@@ -74,3 +74,14 @@ def contactPageView(request):
 
 def page_404_view(request):
     return render(request, 'news/404.html')
+
+# Mahalliy page View
+class LocalPageView(ListView):
+    model = News
+    template_name = 'news/mahalliyPage.html'
+    context_object_name = 'local_news'
+
+    def get_queryset(self):
+        news = News.objects.filter(status=News.Status.Published).filter(category__category='Mahalliy')
+
+        return news
