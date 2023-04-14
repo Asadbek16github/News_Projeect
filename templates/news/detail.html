@@ -23,7 +23,7 @@
               <p>{{ news.text }}</p>
             
               <a href="#"><button class="btn default-btn">Postni tahrirlash</button></a>
-              <a href="#"><button class="btn btn-red">Postni o'chirish</button></a>
+              <a href="{% url 'delete_news' news.slug %}"><button class="btn btn-red">Postni o'chirish</button></a>
             </div>
             <div class="social_link">
               <ul class="sociallink_nav">

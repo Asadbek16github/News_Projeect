@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
+from django.urls import reverse_lazy
 from .models import News, Category
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, DeleteView
 from .forms import ContactForm
 
 # Create your views here.
@@ -85,3 +86,9 @@ class LocalPageView(ListView):
         news = News.objects.filter(status=News.Status.Published).filter(category__category='Mahalliy')
 
         return news
+    
+# Delete news View
+class NewsDelete(DeleteView):
+    model = News
+    template_name = 'cdu/delete.html'
+    success_url = reverse_lazy('home_page')
