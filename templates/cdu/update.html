@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Postni tahrirlash{% endblock title %}
+
+{% block content %}
+    <form method="post">{% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary">Tahrirlash</button>
+    </form>
+{% endblock content %}

@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
 from .models import News, Category
-from django.views.generic import DetailView, ListView, DeleteView
+from django.views.generic import DetailView, ListView, DeleteView, UpdateView, CreateView
 from .forms import ContactForm
 
 # Create your views here.
@@ -92,3 +92,10 @@ class NewsDelete(DeleteView):
     model = News
     template_name = 'cdu/delete.html'
     success_url = reverse_lazy('home_page')
+
+
+# Update news view
+class NewsUpadete(UpdateView):
+    model = News
+    template_name = 'cdu/update.html'
+    fields = ['title', 'image', 'text', 'status', 'category']
