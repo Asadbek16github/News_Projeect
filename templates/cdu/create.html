@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Yangilik qo'shish sahifasi{% endblock title %}
+{% block content %}
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary">Yaratish</button>
+    </form>
+{% endblock content %}

@@ -99,3 +99,9 @@ class NewsUpadete(UpdateView):
     model = News
     template_name = 'cdu/update.html'
     fields = ['title', 'image', 'text', 'status', 'category']
+
+# Create news View
+class NewsCreatePageView(CreateView):
+    model = News 
+    template_name = 'cdu/create.html'
+    fields = ('title', 'slug', 'text', 'image', 'status', 'category', 'author')
