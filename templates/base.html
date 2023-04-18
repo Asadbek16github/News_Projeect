@@ -39,7 +39,14 @@
                         </ul>
                       </div>
                       <div class="header_top_right">
-                        <p>{% now "jS F Y H:i" %}</p>
+                        <p style="font-size: 15px;">
+                          {% now "jS F Y H:i" %} / 
+                          {% if user.is_authenticated %}
+                            <span><a href="{% url 'dashboard_page' %}" style="color: orange;">Profile</a></span>
+                          {% else %}
+                            <span><a href="{% url 'login_page' %}" style="color: orange;">Login</a></span>
+                          {% endif %}
+                        </p>
                       </div>
                     </div>
                   </div>
