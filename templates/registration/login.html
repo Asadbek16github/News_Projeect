@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="login_page">
-        <h1 class="header_page">Sahifaga kirish uchun ma'lumotlaringizni kiriting</h1>
+        <h1 class="title_page">Sahifaga kirish uchun ma'lumotlaringizni kiriting</h1>
         <form method="post">{% csrf_token %}
             {{form.as_p}}
             <button class="btn btn-primary">Yuborish</button>

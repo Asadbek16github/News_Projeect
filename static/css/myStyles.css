@@ -1,0 +1,35 @@
+.login_page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title_page{
+    text-align: center;
+    margin: 30px 0 70px 0;
+  }
+
+  .login_page form{
+    text-align: center;
+    background-color: mediumseagreen;
+    padding: 50px;
+    width: 400px;
+    margin-bottom: 50px;
+
+  }
+
+  .dashboard_page label{
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .dashboard_page input{
+    width: 400px;
+    padding: 10px;
+  }
+
+  .dashboard_page a{
+    margin: 20px 50px;
+  }
