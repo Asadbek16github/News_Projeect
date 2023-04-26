@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import dashboard, signUp
+from .views import dashboard, signUp, SignUp
 from django.contrib.auth.views import ( LoginView, LogoutView, PasswordChangeView,
                                         PasswordChangeDoneView, PasswordResetView, PasswordResetDoneView,
                                         PasswordResetCompleteView, PasswordResetConfirmView

@@ -33,3 +33,8 @@
   .dashboard_page a{
     margin: 20px 50px;
   }
+
+
+.signUp form label{
+  width: 200px;
+}

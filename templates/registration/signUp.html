@@ -3,9 +3,11 @@
 {% block title %}{% endblock title %}
 
 {% block content %}
-    <h1>Ro'yxatdan o'tish sahifasi</h1>
-    <form method="post">{% csrf_token %}
-        {{user_form.as_p}}
-        <button class="btn btn-primary">Yuborish</button>
-    </form>
+    <h1 class="title_page">Ro'yxatdan o'tish sahifasi</h1>
+    <div class="signUp">
+        <form method="post">{% csrf_token %}
+            {{user_form.as_p}}
+            <button class="btn btn-primary">Yuborish</button>
+        </form>
+    </div>
 {% endblock content %}

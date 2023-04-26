@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from .forms import userRegistrationform
+from django.views.generic import CreateView
+from .forms import CustomUserCreationForm
 # Create your views here.
 def dashboard(request):
     user = request.user
@@ -10,6 +13,7 @@ def dashboard(request):
 
     return render(request, 'registration/dashboard.html', context)
 
+# Funcsiyaga asoslangan sign up view
 def signUp(request):
     if request.method == "POST":
         user_form = userRegistrationform(request.POST)
@@ -25,3 +29,10 @@ def signUp(request):
     else:
         user_form = userRegistrationform()
     return render(request, 'registration/signUp.html', {'user_form':user_form})
+
+
+# class ga asoslangan sign up view
+class SignUp(CreateView):
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy('login_page')
+    template_name = 'registration/signUp.html'
