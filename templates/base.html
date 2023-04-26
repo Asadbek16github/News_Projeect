@@ -45,7 +45,8 @@
                           {% if user.is_authenticated %}
                             <span><a href="{% url 'dashboard_page' %}" style="color: orange;">Profile</a></span>
                           {% else %}
-                            <span><a href="{% url 'login_page' %}" style="color: orange;">Login</a></span>
+                            <span><a href="{% url 'login_page' %}" style="color: orange;">Login</a></span> | 
+                            <span><a href="{% url 'signUp' %}" style="color: orange;">SignUp</a></span>
                           {% endif %}
                         </p>
                       </div>
