@@ -1,15 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from .forms import userRegistrationform, profileModelUpdateForm, userModelUpdateForm
-from django.views.generic import CreateView
+from django.views.generic import CreateView, View
 from .forms import CustomUserCreationForm
 from .models import Profile
 # Create your views here.
 def dashboard(request):
     user = request.user
-
+    profile = request.user.profile
     context = {
-        'user': user
+        'user': user,
+        'profile':profile
     }
 
     return render(request, 'registration/dashboard.html', context)
@@ -44,8 +45,23 @@ def updateUserAndProfileModelView(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            return redirect('dashboard_page')
     else:
         user_form = userModelUpdateForm(instance=request.user)
         profile_form = profileModelUpdateForm(instance=request.user.profile)
-    
     return render(request, 'registration/UpdateModels.html', {'user_form':user_form, 'profile_form':profile_form})
+
+
+class UpdateClassView(View):
+    def get(self, request):
+        user_form = userModelUpdateForm(instance=request.user)
+        profile_form = profileModelUpdateForm(instance=request.user.profile)
+        return render(request, 'registration/UpdateModels.html', {'user_form':user_form, 'profile_form':profile_form})
+    
+    def post(self, request):
+        user_form = userModelUpdateForm(instance=request.user, data=request.POST)
+        profile_form = profileModelUpdateForm(instance=request.user.profile, data=self.request.POST, files=self.request.FILES)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect('dashboard_page')

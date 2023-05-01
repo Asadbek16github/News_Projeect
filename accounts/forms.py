@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 from django.contrib.auth.models import User
 from .models import Profile
 
@@ -37,12 +37,12 @@ class CustomUserCreationForm(UserCreationForm):
         fields = ['username', 'first_name', 'last_name', 'email']
 
 
-class profileModelUpdateForm(forms.ModelForm):
+class profileModelUpdateForm(UserChangeForm):
     class Meta:
         model = Profile
         fields = ['image', 'dateBirth']
 
-class userModelUpdateForm(forms.ModelForm):
+class userModelUpdateForm(UserChangeForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name']

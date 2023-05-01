@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Foydalanuvchi ma'lumotlari{% endblock title %}
 
@@ -6,12 +7,25 @@
     <div class="dashboard_page">
         <h1 class="title_page">Foydalanuvchi ma'lumotlari</h1>
         <form method="post">{% csrf_token %}
-            <label>Foydalanuvchi nomi : </label> <input value="{{user.username}}" readonly><br>
-            <label>Email manzilingiz : </label> <input value="{{user.email}}" readonly><br>
-            <label>Foydalanuvchi ismi : </label> <input value="{{user.first_name}}" readonly><br>
-            <label>Email familyasi : </label> <input value="{{user.last_name}}" readonly><br>
+            <div class="personal_all_info">
+                <div class="personal_info">
+                    <label>Foydalanuvchi nomi : </label> <input value="{{user.username}}" readonly placeholder="Ma'lumot yo'q"><br>
+                    <label>Email manzilingiz : </label> <input value="{{user.email}}" readonly placeholder="Ma'lumot yo'q"><br>
+                    <label>Foydalanuvchi ismi : </label> <input value="{{user.first_name}}" readonly placeholder="Ma'lumot yo'q"><br>
+                    <label>Email familyasi : </label> <input value="{{user.last_name}}" readonly placeholder="Ma'lumot yo'q"><br>
+                    <label>Tug'ulgan sana : </label> <input value="{{profile.dateBirth}}" readonly placeholder="Ma'lumot yo'q"><br>
+                </div>
+                <div class="personal_image">
+                    {% if profile.image %}
+                        <img src="{{ profile.image.url }}" alt="" width="400px">
+                    {% else %}
+                    <img src="{% static 'images/Без названия.png' %}" alt="" width="400px">
+                    {% endif %}
+                </div>
+            </div>
             <a href="{% url 'logout_page' %}" class="btn btn-primary">Accauntdan chiqish</a>
             <a href="{% url 'password_change_page' %}" class="btn btn-danger">Parolni almashtirish</a>
+            <a href="{% url 'edit_user_informations' %}" class="btn btn-success">Ma'lumotlarni tahrirlash</a>
         </form>
     </div>
 {% endblock content %}

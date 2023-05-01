@@ -8,4 +8,4 @@ class Profile(models.Model):
     dateBirth = models.DateField(verbose_name="Foydalanuvchi tugilgan sana", null=True, blank=True)
 
     def __str__(self):
-        return self.user.username
+        return f"{self.user.username} profili"
